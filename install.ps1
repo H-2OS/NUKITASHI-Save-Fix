@@ -1,13 +1,11 @@
 <#
-  NUKITASHI Save Fix - One-Click Installer
+  NUKITASHI Save Fix V1.1
   Requires: Windows PowerShell 3.0+ (built into Windows 8+)
-  Usage:    Double-click install.bat
 #>
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $ErrorActionPreference = "Stop"
 
-Write-Host "========================================" -ForegroundColor Cyan
 Write-Host " NUKITASHI Save Fix Installer" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
@@ -75,11 +73,33 @@ if (-not $gameDir) {
     Read-Host "Press Enter to exit"
     exit 1
 }
-if (-not (Test-Path "$gameDir\savedata\saveg.dat")) {
-    Write-Host "ERROR: savedata\saveg.dat not found in $gameDir" -ForegroundColor Red
-    Write-Host "This does not appear to be a valid NUKITASHI installation." -ForegroundColor Red
-    Read-Host "Press Enter to exit"
-    exit 1
+# Validation with retry fallback
+$retryCount = 0
+$maxRetries = 3
+while (-not (Test-Path "$gameDir\savedata\saveg.dat")) {
+    Write-Host "WARNING: savedata\saveg.dat not found in:" -ForegroundColor Yellow
+    Write-Host "  $gameDir" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "This means the game executable was found, but the savedata" -ForegroundColor Gray
+    Write-Host "folder is missing or this is not the actual game directory." -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "Enter the correct game folder path" -ForegroundColor Cyan
+    Write-Host "(the folder that contains both NUKITASHI.exe and savedata\):" -ForegroundColor Cyan
+    $gameDir = Read-Host "Path"
+    if (-not $gameDir) {
+        Write-Host "ERROR: No path provided." -ForegroundColor Red
+        Read-Host "Press Enter to exit"
+        exit 1
+    }
+    if (-not (Test-Path "$gameDir\NUKITASHI.exe")) {
+        Write-Host "WARNING: NUKITASHI.exe not found in that path either." -ForegroundColor Yellow
+    }
+    $retryCount++
+    if ($retryCount -ge $maxRetries) {
+        Write-Host "ERROR: Could not find valid game directory after $maxRetries attempts." -ForegroundColor Red
+        Read-Host "Press Enter to exit"
+        exit 1
+    }
 }
 
 Write-Host "Game: $gameDir" -ForegroundColor Green
@@ -157,12 +177,4 @@ if (Test-Path $fsaveSrc) {
 # ============================================================
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Green
-Write-Host " Installation complete!" -ForegroundColor Green
-Write-Host " Launch the game - the fix is now active." -ForegroundColor Green
-Write-Host "========================================" -ForegroundColor Green
-Write-Host ""
-Write-Host "To uninstall, delete:" -ForegroundColor Gray
-Write-Host "  $advDir\fileio.lua" -ForegroundColor Gray
-Write-Host "  $advDir\fsave.lua" -ForegroundColor Gray
-Write-Host ""
-Read-Host "Press Enter to exit"
+Write-Host " Installation complete! The fix is now active." -ForegroundColor Green
