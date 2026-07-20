@@ -1,0 +1,393 @@
+NUKITASHI Save Fix — 许可证与使用条款
+NUKITASHI Save Fix — License & Terms of Use
+
+================================================================================
+  中文（原版·具有约束力）  |  English (translation, for reference only)
+================================================================================
+
+重要提示： 本软件（以下简称"本补丁"）系针对商业游戏的非官方第三方补丁，
+仅供个人非商业用途使用。使用本补丁即表示您同意以下全部条款。若您不同意，
+请勿下载、安装或使用本补丁。
+
+IMPORTANT: This software (the "Patch") is an unofficial third-party patch for
+a commercial game, intended solely for personal, non-commercial use. By using
+the Patch, you agree to all of the following terms. If you do not agree, do
+not download, install, or use the Patch.
+
+================================================================================
+
+1. 版权归属与代码来源 — Copyright Ownership & Code Provenance
+
+(a) 本补丁包含以下两类代码，其权利归属不同，特此明确区分：
+
+    (i) 原创代码 — 以下文件由原作者 H-2OS（又名 自宅警備員，以下简称
+        "原作者"）独立创作，版权归原作者所有：
+        · install.ps1（PowerShell 安装脚本）
+        · install.bat（批处理启动器）
+        · 配套文档（README.md 等）
+
+    (ii) 经修改的游戏引擎代码 — 以下文件系基于原游戏《NUKITASHI》及
+         《NUKITASHI 2》的 Lua 脚本经反编译、分析后修改而成，其中保留
+         了大量原始代码结构、函数名称与业务逻辑：
+        · fileio_template.lua（基于原游戏 system/adv/fileio.lua）
+        · fsave.lua（基于原游戏 system/adv/fsave.lua）
+
+    对于上述第 (ii) 类文件，原作者仅对其中的修改和新增部分（以下简称
+    "修改部分"）主张作者身份，不主张对原始游戏引擎代码的任何所有权。
+    修改部分包括但不限于：
+    · isSaveFile() 中的磁盘回退（Disk Fallback）逻辑
+    · restore() 中的元数据自动恢复（__recover_metadata）逻辑
+    · fsave.lua 中嵌入存档日期的修改
+    · 用于标记修改的注释和文档字符串
+
+(b) 原游戏《NUKITASHI》（抜きゲーみたいな島に住んでる貧乳はどうすりゃいい
+    ですか？）及《NUKITASHI 2》的全部代码、剧本、美术、音频、角色、商标及
+    Artemis Engine 游戏引擎等知识产权，均归原游戏开发商 Qruppo 及/或其合法
+    权利持有人（以下简称"原版权方"）独家所有。本补丁不内嵌、不重新分发原
+    游戏的任何受版权保护的资产文件（图像、音频、剧本数据等），但确包含经
+    修改的原游戏引擎 Lua 脚本——这些脚本的原始版本版权归原版权方所有。
+
+(a) This Patch contains two categories of code with different ownership,
+    which are expressly distinguished as follows:
+
+    (i) Original Code — The following files were independently created by
+        the author H-2OS (a.k.a. 自宅警備員, hereinafter the "Author"),
+        who holds the copyright to them:
+        · install.ps1 (PowerShell installation script)
+        · install.bat (batch launcher)
+        · Accompanying documentation (README.md, etc.)
+
+    (ii) Modified Game Engine Code — The following files are based on Lua
+         scripts from the games NUKITASHI and NUKITASHI 2, decompiled and
+         analyzed, then modified. They retain substantial portions of the
+         original code structure, function names, and business logic:
+        · fileio_template.lua (based on the original system/adv/fileio.lua)
+        · fsave.lua (based on the original system/adv/fsave.lua)
+
+    For the files in category (ii), the Author claims authorship ONLY over
+    the modifications and additions (hereinafter the "Modifications"), and
+    does NOT claim any ownership over the original game engine code.
+    The Modifications include but are not limited to:
+    · The disk fallback logic in isSaveFile()
+    · The metadata auto-recovery logic (__recover_metadata) in restore()
+    · The save-date embedding change in fsave.lua
+    · Comments and documentation strings marking the changes
+
+(c) All code, scenario, artwork, audio, characters, trademarks, and the
+    Artemis Engine of the original games NUKITASHI and NUKITASHI 2 are the
+    exclusive property of Qruppo and/or its lawful rights holders
+    (hereinafter the "Original Rights Holders"). This Patch does not embed
+    or redistribute any copyrighted asset files of the original games
+    (images, audio, scenario data, etc.), but does contain modified versions
+    of the original game engine Lua scripts — the original versions of which
+    are copyrighted by the Original Rights Holders.
+
+================================================================================
+
+2. 授权范围 — Grant of License
+
+原作者就其原创代码及修改部分，授予您一项全球性、免版税、非独占、非可转让、
+可撤销的个人许可，允许您仅为以下目的使用本补丁：
+
+  (a) 个人学习与研究（阅读、理解本补丁的工作原理及修改方式）；
+  (b) 个人非商业用途（在您合法拥有的游戏副本上安装与运行本补丁）；
+  (c) 非商业性交流与分享（在保留完整署名及本许可证的前提下，与社区分享
+      本补丁）。
+
+特别说明：对于本补丁中包含的原游戏引擎代码，原作者不授予任何许可或权利——
+这些代码的原始版本受原版权方的版权及原游戏最终用户许可协议（EULA）约束。
+您使用本补丁中经修改的 Lua 脚本，需自担与原版权方相关的法律风险。
+
+除上述明确授权外，本许可证不授予您任何其他权利。所有未明确授予的权利均由
+原作者或原版权方（视情况）保留。
+
+The Author grants you a worldwide, royalty-free, non-exclusive, non-transferable,
+revocable personal license to the Author's Original Code and Modifications,
+solely for the following purposes:
+
+  (a) Personal study and research (reading and understanding how the Patch
+      works and how the modifications are implemented);
+  (b) Personal non-commercial use (installing and running the Patch on your
+      lawfully-owned copy of the game);
+  (c) Non-commercial sharing and exchange (sharing the Patch with the
+      community, provided that full attribution and this license are
+      retained).
+
+Special note: The Author grants NO license or rights with respect to the
+original game engine code contained within the Patch — the original versions
+of that code are subject to the Original Rights Holders' copyright and the
+original game's End User License Agreement (EULA). Your use of the modified
+Lua scripts carries legal risks related to the Original Rights Holders,
+which you assume.
+
+No other rights are granted. All rights not expressly granted are reserved
+by the Author or the Original Rights Holders, as applicable.
+
+================================================================================
+
+3. 允许的行为 — Permitted Activities
+
+在遵守本许可证全部条款的前提下，您被允许：
+
+  (a) 在本许可证条件下于 GitHub 或其他代码托管平台 Fork（复刻）本仓库，
+      前提是 Fork 仓库必须保留本许可证全文、原作者署名及原始仓库链接；
+
+  (b) 为非商业目的修改、改编本补丁中的原创代码及修改部分（例如适配不同
+      游戏版本、修复 Bug、翻译界面提示），前提是修改版本同样以本许可证
+      发布并清晰标注修改内容及修改者；
+
+  (c) 在非商业性的社区论坛、Wiki 或个人博客中引用本补丁中的代码片段用于
+      技术说明，前提是附带适当的署名。
+
+Subject to full compliance with all terms of this license, you are permitted to:
+
+  (a) Fork this repository on GitHub or other code-hosting platforms under
+      the terms of this license, provided the fork retains this license in
+      full, the Author's attribution, and a link back to the original
+      repository;
+
+  (b) Modify and adapt the Author's Original Code and Modifications for
+      non-commercial purposes (e.g., adapting to different game versions,
+      fixing bugs, translating UI prompts), provided the modified version
+      is also released under this license with clear notation of changes
+      and the modifier's identity;
+
+  (c) Quote code snippets from the Author's Modifications on non-commercial
+      community forums, wikis, or personal blogs for technical explanation,
+      with appropriate attribution.
+
+================================================================================
+
+4. 严格禁止的行为 — Strictly Prohibited Activities
+
+未经原作者事先明确的书面许可，您不得：
+
+  (a) 将本补丁或其任何部分用于任何商业目的，包括但不限于：
+      · 出售、出租、许可或收费分发本补丁；
+      · 将本补丁作为任何付费产品或付费服务的组成部分；
+      · 在捆绑销售、众筹回报、订阅制服务中包含本补丁；
+      · 将本补丁用于任何直接或间接产生收入的活动中；
+
+  (b) 移除、篡改、隐藏或伪造原作者署名、版权声明或本许可证文本；
+
+  (c) 声称或暗示原作者对原游戏的版权、商标或其他知识产权拥有任何权利，
+      或声称本补丁获得了原版权方的认可或授权；
+
+  (d) 声称或暗示原作者对本补丁或其使用方式提供任何形式的担保或背书；
+
+  (e) 将本补丁用于任何违反原游戏最终用户许可协议（EULA）或适用法律法规
+      的活动。
+
+Without the Author's prior express written permission, you must NOT:
+
+  (a) Use the Patch or any part thereof for any commercial purpose, including
+      but not limited to:
+      · Selling, licensing, or distributing the Patch for a fee;
+      · Incorporating the Patch into any paid product or paid service;
+      · Including the Patch in bundles, crowdfunding rewards, or
+        subscription-based services;
+      · Using the Patch in any activity that directly or indirectly
+        generates revenue;
+
+  (b) Remove, alter, obscure, or falsify the Author's attribution, copyright
+      notices, or this license text;
+
+  (c) Claim or imply that the Author holds any rights to the original game's
+      copyrights, trademarks, or other intellectual property, or that the
+      Patch is endorsed or authorized by the Original Rights Holders;
+
+  (d) Claim or imply that the Author provides any warranty or endorsement
+      of the Patch or its manner of use;
+
+  (e) Use the Patch for any activity that violates the original game's End
+      User License Agreement (EULA) or applicable laws and regulations.
+
+================================================================================
+
+5. 署名要求 — Attribution Requirements
+
+在分发或公开使用本补丁（无论是否为修改版本）时，您必须：
+
+  (a) 以合理方式显著标注原作者署名 "H-2OS / 自宅警備員"；
+  (b) 保留本许可证的完整文本或提供指向其原始位置的链接；
+  (c) 提供指向本补丁原始 GitHub 仓库的链接；
+  (d) 若为修改版本，以合理方式说明您所做的修改，使其不与原始版本及原作者
+      的原始修改相混淆；
+  (e) 不得以任何方式暗示原版权方（Qruppo）对本补丁负责或提供支持。
+
+When distributing or publicly using the Patch (whether modified or not), you
+must:
+
+  (a) Prominently credit the Author as "自宅警備員 / H-2OS" in a reasonable
+      manner;
+  (b) Retain the full text of this license or provide a link to its original
+      location;
+  (c) Provide a link to the Patch's original GitHub repository;
+  (d) If modified, indicate your changes in a reasonable manner so that your
+      version is distinguishable from both the Author's original modifications
+      and the original game code;
+  (e) Not imply in any way that the Original Rights Holders (Qruppo) are
+      responsible for or endorse the Patch.
+
+================================================================================
+
+6. 免责声明 — Disclaimer of Warranty
+
+本补丁按"原样"（AS IS）提供，不附带任何形式的明示或默示担保，包括但不限于
+对适销性、特定用途适用性及不侵权的默示担保。本补丁修改目标游戏的运行时行为，
+原作者不保证：
+
+  (a) 本补丁在所有游戏版本或系统环境下均能正常运行；
+  (b) 使用本补丁不会导致游戏存档损坏、游戏崩溃、游戏进度丢失或其他数据损失；
+  (c) 本补丁与未来的游戏更新、Steam 更新或其他第三方软件保持兼容；
+  (d) 本补丁的使用不违反原游戏的 EULA 或适用法律——您应自行评估和承担相关
+      法律风险。
+
+THE PATCH IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. THIS PATCH MODIFIES
+THE RUNTIME BEHAVIOR OF THE TARGET GAME. THE AUTHOR DOES NOT WARRANT THAT:
+
+  (a) The Patch will function correctly under all game versions or system
+      environments;
+  (b) Use of the Patch will not cause save file corruption, game crashes,
+      progress loss, or other data loss;
+  (c) The Patch will remain compatible with future game updates, Steam
+      updates, or other third-party software;
+  (d) Use of the Patch does not violate the original game's EULA or
+      applicable law — you are responsible for evaluating and assuming
+      any related legal risks.
+
+================================================================================
+
+7. 责任限制 — Limitation of Liability
+
+在适用法律允许的最大范围内，原作者在任何情况下均不对因使用或无法使用本补丁
+而产生的任何直接、间接、附带、特殊、惩罚性或后果性损害承担责任，即使已被告
+知此类损害的可能性。这包括但不限于游戏存档损坏、游戏进度丢失、系统故障、
+任何形式的数据损失，以及因使用经修改的游戏引擎代码而引起的版权侵权索赔。
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, OR
+CONSEQUENTIAL DAMAGES ARISING FROM THE USE OF OR INABILITY TO USE THE PATCH,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THIS INCLUDES, BUT IS NOT
+LIMITED TO, SAVE FILE CORRUPTION, GAME PROGRESS LOSS, SYSTEM MALFUNCTION, ANY
+FORM OF DATA LOSS, AND COPYRIGHT INFRINGEMENT CLAIMS ARISING FROM USE OF THE
+MODIFIED GAME ENGINE CODE.
+
+================================================================================
+
+8. 第三方权利与下架条款 — Third-Party Rights & Takedown Clause
+
+(a) 本补丁是一个非官方的、社区维护的兼容性/修复工具。原作者尊重原版权方
+    （Qruppo）的知识产权。本补丁的 Lua 脚本系基于对合法获取的游戏文件进行
+    互操作性分析而修改，原作者认为此行为在适用法律下可能构成合理使用或
+    类似的合法抗辩，但对此不作任何保证。
+
+(b) 若原版权方认为本补丁侵犯了其合法权益并提出正式异议，原作者承诺将在收到
+    有效通知后立即停止分发本补丁（包括但不限于将原始仓库归档或设为私有），
+    并移除相关分发渠道中的下载链接。
+
+(c) 本条款不构成对原版权方任何权利的承认或放弃，亦不构成对"合理使用"或
+    任何其他法律抗辩的放弃。
+
+(d) 若您认为本补丁侵犯了您的合法权益，请通过本补丁原始仓库的 Issues 功能或
+    原作者公开联系渠道提出，我们将在合理期限内回应。
+
+(a) This Patch is an unofficial, community-maintained compatibility/repair
+    tool. The Author respects the intellectual property of the Original
+    Rights Holders (Qruppo). The Lua scripts in this Patch were modified
+    based on interoperability analysis of lawfully obtained game files. The
+    Author believes this may constitute fair use or a similar lawful defense
+    under applicable law, but makes no warranty to this effect.
+
+(b) Should the Original Rights Holders formally object on the basis that this
+    Patch infringes their lawful rights, the Author undertakes to promptly
+    cease distribution of this Patch (including but not limited to archiving
+    or privatizing the original repository) and remove download links from
+    relevant distribution channels upon receipt of valid notice.
+
+(c) This clause does not constitute an admission or waiver of any rights, nor
+    a waiver of any "fair use" or other legal defense.
+
+(d) If you believe this Patch infringes your lawful rights, please contact us
+    via the Issues feature of the original repository or the Author's public
+    contact channels. We will respond within a reasonable time.
+
+================================================================================
+
+9. 许可证终止 — License Termination
+
+(a) 若您违反本许可证的任何条款，本许可证自动终止。许可证终止后，您必须
+    停止使用本补丁、从其安装位置删除所有补丁文件，并销毁您持有或控制的
+    所有副本。
+
+(b) 第 1 条（版权归属与代码来源）、第 5 条（署名要求）、第 6 条（免责声明）、
+    第 7 条（责任限制）、第 8 条（第三方权利与下架条款）及第 10 条（其他
+    条款）在许可证终止后继续有效。
+
+(a) This license terminates automatically if you breach any of its terms.
+    Upon termination, you must cease using the Patch, delete all Patch files
+    from their installation location, and destroy all copies in your
+    possession or control.
+
+(b) Sections 1 (Copyright Ownership & Code Provenance), 5 (Attribution
+    Requirements), 6 (Disclaimer of Warranty), 7 (Limitation of Liability),
+    8 (Third-Party Rights & Takedown Clause), and 10 (Miscellaneous)
+    survive termination of this license.
+
+================================================================================
+
+10. 其他条款 — Miscellaneous
+
+(a) 可分割性 — 若本许可证的任何条款被有管辖权的法院认定为无效或不可执行，
+    该条款应在必要范围内予以限制或剔除，本许可证的其余条款应继续完全有效。
+
+(b) 完整协议 — 本许可证构成您与原作者之间关于本补丁使用方式的完整协议，取
+    代双方之前就同一事项达成的任何口头或书面沟通。本许可证不意图修改或取
+    代您与原版权方之间的任何协议（包括原游戏 EULA）。
+
+(c) 无放弃 — 原作者未能或延迟行使本许可证项下的任何权利，不构成对该权利的
+    放弃。任何弃权必须以书面形式作出并由原作者签署方为有效。
+
+(d) 适用法律 — 本许可证受原作者居住地法律管辖，不适用法律冲突原则。因本
+    许可证引起的争议应尽可能通过友好协商解决。
+
+(a) Severability — If any provision of this license is held to be invalid or
+    unenforceable by a court of competent jurisdiction, that provision shall
+    be limited or severed to the minimum extent necessary, and the remaining
+    provisions shall continue in full force and effect.
+
+(b) Entire Agreement — This license constitutes the entire agreement between
+    you and the Author regarding the use of the Patch, and supersedes all
+    prior oral or written communications on the same subject matter. This
+    license is not intended to modify or supersede any agreement between you
+    and the Original Rights Holders (including the original game's EULA).
+
+(c) No Waiver — The Author's failure or delay in exercising any right under
+    this license shall not operate as a waiver of that right. Any waiver must
+    be in writing and signed by the Author.
+
+(d) Governing Law — This license shall be governed by the laws of the Author's
+    country of residence, without regard to conflict-of-law principles.
+    Disputes arising from this license shall be resolved, where possible,
+    through amicable negotiation.
+
+================================================================================
+
+© 2026 H-2OS (自宅警備員).  Some rights reserved.
+
+本补丁中的原创代码及修改部分适用本许可证。
+经修改的游戏引擎代码中不属于修改部分的原始代码，其权利归原版权方所有。
+本补丁并非由 Qruppo 开发、认可或授权。
+
+The Author's Original Code and Modifications are licensed under the above
+terms. Original game engine code contained in the Patch that does not form
+part of the Modifications remains the property of the Original Rights Holders.
+This Patch is not developed, endorsed, or authorized by Qruppo.
+
+本许可证中文原版具有约束力；英文译本仅供参考。
+The Chinese original of this license is binding; the English translation is
+for reference only.
+
+================================================================================
