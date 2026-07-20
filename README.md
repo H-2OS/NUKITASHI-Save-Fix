@@ -7,7 +7,11 @@
 ---
 ### 声明
 
-本补丁为非官方第三方补丁，仅供学习交流使用，禁止商用。原游戏的全部代码、剧情、美术、音频等内容，版权归原作者 / 开发团队所有。若版权所有者提出异议，本项目将立即下架。
+本补丁为非官方第三方补丁，仅供学习交流使用，禁止商用。原游戏《NUKITASHI》及《NUKITASHI 2》的全部代码、剧情、美术、音频等内容，版权归原版权方 Qruppo 所有。
+
+本补丁中的 Lua 脚本（`fileio_template.lua`、`fsave.lua`）系使用解包工具（GARbro）对合法获取的游戏文件进行互操作性分析后，基于原游戏引擎（Artemis Engine）代码修改而成——原始引擎代码版权归 Qruppo 所有，原作者仅对修改和新增部分主张权利。`install.ps1` 与 `install.bat` 为完全原创代码。
+
+本项目以自定义许可证发布，详见 [LICENSE.txt](./LICENSE.txt)。若版权所有者提出异议，本项目将立即下架。
 
 ### 简介
 
@@ -172,7 +176,11 @@ scr.ip.save = { text=(tx), txno=(ax.lang), crc=(ax.crc), date=get_unixtime() }
 
 ### 聲明
 
-本修補程式為非官方第三方修補程式，僅供學習交流使用，禁止商用。原遊戲的全部程式碼、劇情、美術、音訊等內容，版權歸原作者 / 開發團隊所有。若著作權所有者提出異議，本專案將立即下架。
+本修補程式為非官方第三方修補程式，僅供學習交流使用，禁止商用。原遊戲《NUKITASHI》及《NUKITASHI 2》的全部程式碼、劇情、美術、音訊等內容，版權歸原版權方 Qruppo 所有。
+
+本修補程式中的 Lua 指令碼（`fileio_template.lua`、`fsave.lua`）係使用解包工具（GARbro）對合法取得的遊戲檔案進行互操作性分析後，基於原遊戲引擎（Artemis Engine）程式碼修改而成——原始引擎程式碼版權歸 Qruppo 所有，原作者僅對修改和新增部分主張權利。`install.ps1` 與 `install.bat` 為完全原創程式碼。
+
+本專案以自訂授權條款發布，詳見 [LICENSE.txt](./LICENSE.txt)。若著作權所有者提出異議，本專案將立即下架。
 
 ### 簡介
 
@@ -337,7 +345,11 @@ scr.ip.save = { text=(tx), txno=(ax.lang), crc=(ax.crc), date=get_unixtime() }
 
 ### Disclaimer
 
-This patch is an unofficial third-party patch, for educational and personal use only; commercial use is prohibited. All original game code, story, art, audio, and other content are the property of their respective copyright holders / development team. Should the copyright holders object, this project will be taken down immediately.
+This patch is an unofficial third-party patch, for educational and personal use only; commercial use is prohibited. All original game code, story, art, audio, and other content of NUKITASHI and NUKITASHI 2 are the property of the original rights holder, Qruppo.
+
+The Lua scripts in this patch (`fileio_template.lua`, `fsave.lua`) were created by using extraction tools (GARbro) to perform interoperability analysis on lawfully obtained game files, and modifying the original game engine (Artemis Engine) code — the original engine code is copyrighted by Qruppo; the Author claims rights only over the modifications and additions. `install.ps1` and `install.bat` are entirely original code.
+
+This project is released under a custom license. See [LICENSE.txt](./LICENSE.txt). Should the copyright holders object, this project will be taken down immediately.
 
 ### About
 
@@ -500,4 +512,4 @@ The current time is embedded into the BOWS file at save time. Phase 2 reads `scr
 ---
 
 <br>
-<p align="center">By 自宅警備員 &nbsp;|&nbsp; 2026.7</p>
+<p align="center">© 2026 H-2OS (自宅警備員). Some rights reserved.&nbsp;|&nbsp; <a href="./LICENSE.txt">LICENSE</a></p>
